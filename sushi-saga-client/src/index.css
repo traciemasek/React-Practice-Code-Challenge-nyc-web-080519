@@ -14,10 +14,14 @@ body {
       ". . . . ."
       ". bt bt bt ."
       ". . rm . ."
-      ". tb tb tb .";
+      ". tb tb tb ."
+      ". . sw . .";
 }
 
-
+.sushi-wallet {
+  grid-area: sw;
+  margin: auto;
+}
 .remaining {
   grid-area: rm;
   margin: auto;
@@ -77,3 +81,4 @@ body {
   width: 700px;
   margin: auto;
 }
+
