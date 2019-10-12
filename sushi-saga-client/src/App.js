@@ -38,7 +38,7 @@ class App extends Component {
     let moneyCopy = this.state.money
     let emptyPlatesCopy = [...this.state.emptyPlates]
     let foundSushi = sushiCopy.find(sushiObj => sushiObj === sushi)
-    console.log("found sushi = ", foundSushi)
+    // console.log("found sushi = ", foundSushi)
 
     if (moneyCopy >= foundSushi.price) {
       foundSushi.isEaten = true;
@@ -52,12 +52,20 @@ class App extends Component {
     })
   }
 
+  addMoney = (amount) => {
+    let moneyCopy = this.state.money
+    moneyCopy += amount
+    this.setState({
+      money: moneyCopy
+    })
+  }
+
 
   render() {
     return (
       <div className="app">
         <SushiContainer sushi={this.state.sushi} sushiCounter={this.state.sushiCounter} eatSushi={this.eatSushi}/>
-        <Table money={this.state.money} emptyPlates={this.state.emptyPlates}/>
+        <Table money={this.state.money} emptyPlates={this.state.emptyPlates} addMoney={this.addMoney}/>
       </div>
     );
   }
