@@ -21,6 +21,7 @@ body {
 .sushi-wallet {
   grid-area: sw;
   margin: auto;
+  text-align: center;
 }
 .remaining {
   grid-area: rm;

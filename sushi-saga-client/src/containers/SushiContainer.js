@@ -17,7 +17,7 @@ class SushiContainer extends React.Component {
   handleOtherButtonClick = () => {
     let counterCopy = this.state.counter
     counterCopy -=4
-    if (counterCopy <= 0)  {counterCopy = this.props.sushi.length - 4 }
+    if (counterCopy < 0)  {counterCopy = this.props.sushi.length - 4 }
     this.setState({counter: counterCopy})
   }
 
@@ -34,10 +34,11 @@ class SushiContainer extends React.Component {
     return (
       <Fragment>
         <div className="belt">
+          <MoreButton handleMoreButtonClick={this.handleOtherButtonClick}/>
 
           {displaySushis}
 
-          <MoreButton handleMoreButtonClick={this.handleMoreButtonClick} handleOtherButtonClick={this.handleOtherButtonClick}/>
+          <MoreButton handleMoreButtonClick={this.handleMoreButtonClick} />
         </div>
       </Fragment>
     )

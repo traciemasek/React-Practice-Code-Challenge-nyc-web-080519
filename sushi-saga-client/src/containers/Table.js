@@ -1,25 +1,47 @@
 import React, { Fragment } from 'react'
 
-const Table = (props) => {
+class Table extends React.Component {
+  state = {addedMoney: 0}
 
-  const renderPlates = (array) => {
+  renderPlates = (array) => {
     return array.map((x, index) => {
       return <div key={index} className="empty-plate" style={{ top: -7 * index }}/>
     })
   }
 
-  return (
-    <Fragment>
-      <h1 className="remaining">
-        You have: ${props.money} remaining!
-      </h1>
-      <div className="table">
-        <div className="stack">
-          { renderPlates(props.emptyPlates) }
+  handleOnChange = (e) => {
+    this.setState({
+      addedMoney: parseInt(e.target.value, 10)
+    })
+  }
+
+  handleOnSubmit = (e) => {
+    e.preventDefault()
+    this.props.addMoney(this.state.addedMoney)
+  }
+
+  render() {
+    return (
+      <Fragment>
+        <h1 className="remaining">
+          You have: ${this.props.money} remaining!
+        </h1>
+        <div className="table">
+          <div className="stack">
+            { this.renderPlates(this.props.emptyPlates) }
+          </div>
         </div>
-      </div>
-    </Fragment>
-  )
+        <div className="sushi-wallet">
+          <h2>Sushi Wallet</h2>
+          <form onSubmit={this.handleOnSubmit}>
+            <label>Add money to your sushi wallet: </label>
+            <input type="number" name="money" placeholder="enter an amount" onChange={this.handleOnChange}></input>
+            <input type="submit" value="Add Money"></input>
+          </form>
+        </div>
+      </Fragment>
+    )
+  }
 }
 
 export default Table
