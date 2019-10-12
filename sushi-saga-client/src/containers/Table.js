@@ -18,9 +18,11 @@ class Table extends React.Component {
   handleOnSubmit = (e) => {
     e.preventDefault()
     this.props.addMoney(this.state.addedMoney)
+    this.setState({addedMoney: 0})
   }
 
   render() {
+    // console.log(this.state)
     return (
       <Fragment>
         <h1 className="remaining">
@@ -35,7 +37,7 @@ class Table extends React.Component {
           <h2>Sushi Wallet</h2>
           <form onSubmit={this.handleOnSubmit}>
             <label>Add money to your sushi wallet: </label>
-            <input type="number" name="money" placeholder="enter an amount" onChange={this.handleOnChange}></input>
+            <input type="number" name="money" value={this.state.addedMoney} onChange={this.handleOnChange}></input>
             <input type="submit" value="Add Money"></input>
           </form>
         </div>

@@ -44,6 +44,8 @@ class App extends Component {
       foundSushi.isEaten = true;
       emptyPlatesCopy.push(foundSushi);
       moneyCopy = moneyCopy - foundSushi.price
+    } else {
+      alert("Add more money to your sushi wallet!")
     }
     this.setState({
       sushi: sushiCopy,
